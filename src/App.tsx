@@ -36,17 +36,20 @@ function App() {
   }
   return (
     <div className="App">
-      <Button type="primary" onClick={handleGenerate}>
+      <div className="btn-container">
+      <Button type="primary" onClick={handleGenerate} style={{display: 'block'}}>
         {" "}
         click me to generate a video
       </Button>
+      {videoLoad && <Button type="primary" onClick={downloadVideo} style={{display: 'block'}}> click me to downloadVideo</Button>}
+      </div>
+
       <Modal open={modalVisible} footer={null} closable={false}>
         <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}}>
         <div>视频生成中....</div>
         <Progress percent={progress} type="circle"></Progress>
         </div>
       </Modal>
-      {videoLoad && <Button type="primary" onClick={downloadVideo}> click me to downloadVideo</Button>}
     </div>
   );
 }
