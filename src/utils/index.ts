@@ -108,7 +108,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
   };
 
   recorder!.onstop = () => {
-    const blob = new Blob(data, { type: "video/webm" });
+    const blob = new Blob(data, { type: recorder.mimeType });
     const videoUrl = URL.createObjectURL(blob);
 
     // 这里可以将 videoUrl 用于播放或下载
