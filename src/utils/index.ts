@@ -85,15 +85,29 @@ export const useVideoGenerator = (options: GenertorOptions) => {
   const ctx = canvas.getContext("2d");
 
   const stream = canvas.captureStream();
-  const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+  let recorder: MediaRecorder;
+  try {
+    recorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+  }
+  catch (err1) {
+    try {
+      // Fallback for iOS
+      recorder = new MediaRecorder(stream, { mimeType: 'video/mp4' });
+    }
+    catch (err2) {
+      // If fallback doesn't work either. Log / process errors.
+      console.error({err1});
+      console.error({err2})
+    }
+  }
 
-  recorder.ondataavailable = function (event) {
+  recorder!.ondataavailable = function (event) {
     if (event.data && event.data.size) {
       data.push(event.data);
     }
   };
 
-  recorder.onstop = () => {
+  recorder!.onstop = () => {
     const blob = new Blob(data, { type: "video/webm" });
     const videoUrl = URL.createObjectURL(blob);
 
