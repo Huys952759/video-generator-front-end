@@ -70,7 +70,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
       `${process.env.PUBLIC_URL}/image/house6.jpeg`,
     ],
     blurRadius = 10,
-    duration = 10
+    duration = 30
   } = options;
 
   // 每一帧集合
