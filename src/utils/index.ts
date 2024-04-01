@@ -47,7 +47,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
   const {
     containerW = 360 * 2,
     containerH = 640 * 2,
-    headerAnimationTime = 0.5,
+    headerAnimationTime = 1.5,
     imgLastTime = 5,
     imgEnterAnimationTime = 1.5,
     imgStaticTime = 2,
@@ -303,7 +303,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
       subTitleAreaPostion.top + 40
     );
 
-    ctx.font = "35px 宋简体"; //文字大小
+    ctx.font = "50px 宋简体"; //文字大小
     ctx.fillStyle = "#ffa500"; //文字颜色
     ctx.fillText(
       "随时看房 首次出租",
