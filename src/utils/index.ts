@@ -33,31 +33,31 @@ interface GenertorOptions {
 }
 export const useVideoGenerator = (options: GenertorOptions) => {
   const {
-    containerW = 400,
-    containerH = 750,
+    containerW = 360,
+    containerH = 640,
     headerAnimationTime = 2,
     imgLastTime = 5,
     imgEnterAnimationTime = 1.5,
     imgStaticTime = 2,
     imgLeaveAnimationTime = 1.5,
     frameRate = 60,
-    headerWidth = 300,
+    headerWidth = 280,
     headerHeight = 100,
     headerPosition = {
-      left: 50,
-      top: 50,
+      left: (containerW - headerWidth) / 2,
+      top: 30,
     },
-    floorplanWidth = 250,
+    floorplanWidth = 240,
     floorplanHeight = 150,
     floorplanPostion = {
-      left: 75,
-      top: 150,
+      left: (containerW - floorplanWidth) / 2,
+      top: headerPosition.top + headerHeight,
     },
-    imgWidth = 400,
-    imgHeight = 300,
+    imgWidth = 360,
+    imgHeight = 280,
     imgPosition = {
       left: 0,
-      top: 350,
+      top: floorplanPostion.top + floorplanHeight + 50,
     },
     headerImgSrc = `${process.env.PUBLIC_URL}/image/header.jpg`,
     floorplanImgSrc = `${process.env.PUBLIC_URL}/image/floorplan.png`,
@@ -70,7 +70,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
       `${process.env.PUBLIC_URL}/image/house6.jpeg`,
     ],
     blurRadius = 10,
-    duration = 30
+    duration = 10
   } = options;
 
   // 每一帧集合
