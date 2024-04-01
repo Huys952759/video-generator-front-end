@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import * as StackBlur from "stackblur-canvas";
 
 interface Position {
@@ -71,7 +70,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
       `${process.env.PUBLIC_URL}/image/house6.jpeg`,
     ],
     blurRadius = 10,
-    duration = 30
+    duration = 10
   } = options;
 
   // 每一帧集合
@@ -108,7 +107,7 @@ export const useVideoGenerator = (options: GenertorOptions) => {
   };
 
   recorder!.onstop = () => {
-    const blob = new Blob(data, { type: recorder.mimeType });
+    const blob = new Blob(data, { type: 'video/mp4' });
     const videoUrl = URL.createObjectURL(blob);
 
     // 这里可以将 videoUrl 用于播放或下载
